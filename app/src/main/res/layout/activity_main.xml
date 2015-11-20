@@ -24,18 +24,22 @@
         android:layout_height="192dp">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/toolbar_collapsing"
+            style="@style/Dumper.Style.Toolbar.Collapsing"
             app:layout_scrollFlags="snap|exitUntilCollapsed">
 
             <android.support.v7.widget.Toolbar
-                style="@style/Dumper.ActionBar"
+                android:id="@+id/toolbar"
+                style="@style/Dumper.Style.Toolbar"
                 app:layout_collapseMode="pin"
-                app:subtitle="Subtitle"
-                app:title="@string/app_name"
-                app:titleTextAppearance="@style/Dumper.ActionBar.Title"
-                app:titleTextColor="@color/colorAppBarTitle" />
+                app:title="@string/app_name" />
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        style="@style/Dumper.Style.FloatingActionButton"
+        android:src="@drawable/ic_new_24dp"
+        app:layout_anchor="@id/toolbar_collapsing"
+        app:layout_anchorGravity="bottom|right|end" />
 
 </android.support.design.widget.CoordinatorLayout>
