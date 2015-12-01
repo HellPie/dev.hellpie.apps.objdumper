@@ -14,26 +14,21 @@
  * limitations under the License.
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+package dev.hellpie.apps.objdumper.utils;
 
-buildscript {
-    repositories {
-        jcenter()
+public class ApplicationsUtils {
+
+    private static ApplicationsUtils SELF = null;
+
+    private ApplicationsUtils() {
+        SELF = this;
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:1.5.0'
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+    public static ApplicationsUtils getUtils() {
+        if (SELF == null) {
+            return new ApplicationsUtils();
+        } else {
+            return SELF;
+        }
     }
-}
-
-allprojects {
-    repositories {
-        jcenter()
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }

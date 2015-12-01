@@ -59,4 +59,13 @@
         <item name="android:clickable">true</item>
     </style>
 
+    <style name="Dumper.Style.WindowContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
+        <item name="android:paddingBottom">@dimen/activity_vertical_margin</item>
+        <item name="android:paddingStart">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingEnd">@dimen/activity_horizontal_margin</item>
+    </style>
+
 </resources>

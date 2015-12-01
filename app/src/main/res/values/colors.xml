@@ -17,11 +17,10 @@
 <resources>
     <color name="colorPrimary">@color/wetasphalt</color>
     <color name="colorPrimaryDark">@color/midnightblue</color>
-    <color name="colorPrimaryLight">#CFD8DC</color>
-    <color name="colorAppbarTitle">@color/cloud</color>
-    <color name="colorTextPrimary">@color/midnightblue</color>
     <color name="colorAccent">@color/orange</color>
     <color name="colorBackground">@color/cloud</color>
+    <color name="colorTextPrimary">@color/midnightblue</color>
+    <color name="colorAppbarTitle">@color/cloud</color>
 
     <!-- Flat UI Colors Palette -->
     <!-- http://www.materialui.co/flatuicolors -->

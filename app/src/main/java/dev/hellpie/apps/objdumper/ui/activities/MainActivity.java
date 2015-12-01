@@ -14,18 +14,29 @@
  * limitations under the License.
  */
 
-package dev.hellpie.apps.objdumper;
+package dev.hellpie.apps.objdumper.ui.activities;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import dev.hellpie.apps.objdumper.R;
+import dev.hellpie.apps.objdumper.listeners.FABListener;
+import dev.hellpie.apps.objdumper.ui.views.RippleSheet;
+
 public class MainActivity extends AppCompatActivity {
+
+    private RippleSheet sheet = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+
+        FloatingActionButton newDumpFAB = (FloatingActionButton) findViewById(R.id.fab);
+        newDumpFAB.setOnClickListener(new FABListener());
+
     }
 }
