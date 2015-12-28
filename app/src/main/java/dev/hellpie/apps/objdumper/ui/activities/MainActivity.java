@@ -16,27 +16,29 @@
 
 package dev.hellpie.apps.objdumper.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import dev.hellpie.apps.objdumper.R;
-import dev.hellpie.apps.objdumper.listeners.FABListener;
-import dev.hellpie.apps.objdumper.ui.views.RippleSheet;
 
 public class MainActivity extends AppCompatActivity {
-
-    private RippleSheet sheet = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        setSupportActionBar((Toolbar) findViewById(R.id.layout_appbar_toolbar));
+    }
 
-        FloatingActionButton newDumpFAB = (FloatingActionButton) findViewById(R.id.fab);
-        newDumpFAB.setOnClickListener(new FABListener());
+    public void onFABClick(View view) {
+        if (!(view instanceof FloatingActionButton)) return;
 
+        Intent intent = new Intent(this, DumpableAppsActivity.class);
+        // TODO: Shared Transitions and Circular Reveal
+        startActivity(intent);
     }
 }

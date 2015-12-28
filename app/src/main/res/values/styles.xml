@@ -40,7 +40,14 @@
 
     <style name="Dumper.Style"><!-- Placeholder --></style>
 
+    <style name="Dumper.Style.AppBarLayout">
+        <item name="android:id">@id/layout_appbar</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/appbar_height</item>
+    </style>
+
     <style name="Dumper.Style.Toolbar">
+        <item name="android:id">@id/layout_appbar_toolbar</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
         <item name="android:theme">@style/Dumper.Theme.Toolbar</item>
@@ -49,23 +56,29 @@
     </style>
 
     <style name="Dumper.Style.Toolbar.Collapsing" parent="Dumper.Style.Toolbar">
+        <item name="android:id">@id/layout_appbar_toolbar_collapsing</item>
         <item name="android:layout_height">match_parent</item>
     </style>
 
     <style name="Dumper.Style.FloatingActionButton">
+        <item name="android:id">@id/layout_appbar_fab</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">16dp</item>
+        <item name="android:layout_margin">@dimen/fab_margin</item>
         <item name="android:clickable">true</item>
+        <item name="android:onClick">onFABClick</item>
+        <item name="android:src">@drawable/ic_new_24dp</item>
     </style>
 
     <style name="Dumper.Style.WindowContent">
+        <item name="android:id">@id/window_content_scrollable</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
-        <item name="android:paddingBottom">@dimen/activity_vertical_margin</item>
-        <item name="android:paddingStart">@dimen/activity_horizontal_margin</item>
-        <item name="android:paddingEnd">@dimen/activity_horizontal_margin</item>
+    </style>
+
+    <style name="Dumper.Style.WindowContent.Scrollable">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
     </style>
 
 </resources>

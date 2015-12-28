@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~ Copyright 2015 Diego Rossi (@_HellPie)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,13 +16,13 @@
   -->
 
 <android.support.design.widget.CoordinatorLayout
-    android:id="@id/activity_main"
+    android:id="@id/activity_dumpable_apps"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.MainActivity">
+    tools:context="dev.hellpie.apps.objdumper.ui.activities.DumpableAppsActivity">
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~ AppBar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <android.support.design.widget.AppBarLayout
@@ -34,15 +35,9 @@
             <android.support.v7.widget.Toolbar
                 style="@style/Dumper.Style.Toolbar"
                 app:layout_collapseMode="pin"
-                app:title="@string/activity_main"/>
+                app:title="@string/activity_dumpable_apps"/>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
-
-    <!--~~~~~~~~~~~~~~~~~~~~~~~ FAB ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <android.support.design.widget.FloatingActionButton
-        style="@style/Dumper.Style.FloatingActionButton"
-        app:layout_anchor="@id/layout_appbar_toolbar_collapsing"
-        app:layout_anchorGravity="bottom|right|end" />
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~ Content ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 

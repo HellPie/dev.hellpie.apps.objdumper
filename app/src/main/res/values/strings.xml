@@ -15,5 +15,15 @@
   -->
 
 <resources>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~ App Generics ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <string name="app_name">AutoDumPE 3.0</string>
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~ Activities ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <string name="activity_main">AutoDumPE 3.0</string>
+    <string name="activity_dumpable_apps">Dumpable Apps</string>
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~ Packages List ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <string name="progress_dialog_loading_apps">Loading Apps…</string>
+    <string name="progress_dialog_loading">Loading Infos for:\n%s…</string>
+    <string name="apps_list_tag_version">version: %s</string>
 </resources>
