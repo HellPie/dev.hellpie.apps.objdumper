@@ -17,6 +17,7 @@
 package dev.hellpie.apps.objdumper.ui.activities;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +27,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import dev.hellpie.apps.objdumper.R;
-import dev.hellpie.apps.objdumper.dumper.AsyncDumper;
+import dev.hellpie.apps.objdumper.dumper.AsyncAppDetector;
 import dev.hellpie.apps.objdumper.models.AppInfoAdapter;
 import dev.hellpie.apps.objdumper.ui.views.DividerItemDecoration;
 
@@ -48,13 +49,16 @@ public class DumpableAppsActivity extends AppCompatActivity {
         view.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         view.setAdapter(adapter);
 
-        new AsyncDumper(this, adapter).execute();
+        new AsyncAppDetector(this, adapter).execute();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
+
             return true;
         } else {
             return super.onOptionsItemSelected(item);

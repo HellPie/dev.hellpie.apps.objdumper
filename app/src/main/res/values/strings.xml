@@ -26,4 +26,7 @@
     <string name="progress_dialog_loading_apps">Loading Apps…</string>
     <string name="progress_dialog_loading">Loading Infos for:\n%s…</string>
     <string name="apps_list_tag_version">version: %s</string>
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~ Libraries Dialog ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <string name="libs_list_select_single">Select a library to decompile:</string>
 </resources>

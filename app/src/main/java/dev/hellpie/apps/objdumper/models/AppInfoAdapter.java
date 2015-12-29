@@ -28,7 +28,6 @@ import dev.hellpie.apps.objdumper.R;
 public class AppInfoAdapter extends RecyclerView.Adapter<AppInfoViewHolder> {
 
     private List<AppInfoHolder> mData = new ArrayList<>();
-    private OnItemClickListener listener;
 
     @Override
     public AppInfoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -46,10 +45,6 @@ public class AppInfoAdapter extends RecyclerView.Adapter<AppInfoViewHolder> {
     @Override
     public int getItemCount() {
         return mData.size();
-    }
-
-    public void setListener(OnItemClickListener listener) {
-        this.listener = listener;
     }
 
     public AppInfoAdapter setAppInfos(List<AppInfoHolder> holders) {
@@ -82,9 +77,5 @@ public class AppInfoAdapter extends RecyclerView.Adapter<AppInfoViewHolder> {
 
     public AppInfoAdapter removeAppInfo(AppInfoHolder holder) {
         return removeAppInfo(mData.indexOf(holder));
-    }
-
-    public interface OnItemClickListener {
-        void OnItemClick(AppInfoHolder holder);
     }
 }

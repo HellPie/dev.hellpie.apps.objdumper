@@ -23,6 +23,11 @@ import java.util.ArrayList;
 
 public class AppInfoHolder {
 
+    public static final String NAME = "APP_NAME";
+    public static final String ID = "APP_PACKAGE";
+    public static final String VERSION = "APP_VERSION";
+    public static final String PATH = "APP_PATH";
+
     public String name;
     public String id;
     public String version;

@@ -19,11 +19,17 @@ package dev.hellpie.apps.objdumper.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.view.View;
+
+import dev.hellpie.apps.objdumper.models.AppInfoHolder;
 
 public class AppUtils {
 
@@ -95,6 +101,22 @@ public class AppUtils {
 
     public int pxToDp(int px) {
         return (int) (px / Resources.getSystem().getDisplayMetrics().density);
+    }
+
+    public Drawable fixInfosFor(Context context, AppInfoHolder holder) {
+
+        PackageManager pm = context.getPackageManager();
+
+        try {
+
+            PackageInfo pkgInfo = pm.getPackageInfo(holder.id, 0);
+            ApplicationInfo appInfo = pkgInfo.applicationInfo;
+            if (appInfo != null) return appInfo.loadIcon(pm);
+
+        } catch (PackageManager.NameNotFoundException ignored) {
+        }
+
+        return null;
     }
 
     public enum State {

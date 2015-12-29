@@ -23,9 +23,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import java.io.File;
+import java.util.ArrayList;
+
 import dev.hellpie.apps.objdumper.R;
+import dev.hellpie.apps.objdumper.models.AppInfoHolder;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final int GET_DUMPABLE_APP = 1;
+    public static final String LIB_PATH = "LIB_PATH";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +41,26 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.layout_appbar_toolbar));
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode != RESULT_OK || requestCode != GET_DUMPABLE_APP) return;
+
+        AppInfoHolder holder = new AppInfoHolder();
+        holder.name = data.getStringExtra(AppInfoHolder.NAME);
+        holder.id = data.getStringExtra(AppInfoHolder.ID);
+        holder.version = data.getStringExtra(AppInfoHolder.VERSION);
+        holder.path = data.getStringExtra(AppInfoHolder.PATH);
+
+        holder.libs = new ArrayList<>();
+        holder.libs.add(new File(data.getStringExtra(LIB_PATH)));
+    }
+
     public void onFABClick(View view) {
         if (!(view instanceof FloatingActionButton)) return;
 
         Intent intent = new Intent(this, DumpableAppsActivity.class);
-        // TODO: Shared Transitions and Circular Reveal
-        startActivity(intent);
+        startActivityForResult(intent, GET_DUMPABLE_APP);
     }
 }

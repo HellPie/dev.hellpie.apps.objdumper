@@ -35,12 +35,12 @@ import dev.hellpie.apps.objdumper.R;
 import dev.hellpie.apps.objdumper.models.AppInfoAdapter;
 import dev.hellpie.apps.objdumper.models.AppInfoHolder;
 
-public class AsyncDumper extends AsyncTask<Void, AppInfoHolder, Void> {
+public class AsyncAppDetector extends AsyncTask<Void, AppInfoHolder, Void> {
 
     private ProgressDialog dialog;
     private AppInfoAdapter adapter;
 
-    public AsyncDumper(Activity activity, AppInfoAdapter appInfoAdapter) {
+    public AsyncAppDetector(Activity activity, AppInfoAdapter appInfoAdapter) {
         adapter = appInfoAdapter;
         dialog = new ProgressDialog(activity);
         dialog.setIndeterminate(true);

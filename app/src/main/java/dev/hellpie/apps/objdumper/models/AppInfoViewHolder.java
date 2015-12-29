@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import dev.hellpie.apps.objdumper.R;
+import dev.hellpie.apps.objdumper.ui.listeners.OnAppInfoClickListener;
 
 public class AppInfoViewHolder extends RecyclerView.ViewHolder {
 
@@ -36,6 +37,8 @@ public class AppInfoViewHolder extends RecyclerView.ViewHolder {
         name = (TextView) view.findViewById(R.id.list_package_item_name);
         version = (TextView) view.findViewById(R.id.list_package_item_version);
         icon = (ImageView) view.findViewById(R.id.list_package_item_icon);
+
+        view.setOnClickListener(new OnAppInfoClickListener(this));
     }
 
     public AppInfoViewHolder bindAppInfo(AppInfoHolder holder) {
@@ -45,5 +48,9 @@ public class AppInfoViewHolder extends RecyclerView.ViewHolder {
         version.setText(String.format(version.getContext().getString(R.string.apps_list_tag_version), holder.version));
         icon.setImageDrawable(holder.icon);
         return this;
+    }
+
+    public AppInfoHolder getHolder() {
+        return holder;
     }
 }
