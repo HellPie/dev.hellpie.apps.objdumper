@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2015 Diego Rossi (@_HellPie)
+  ~ Copyright 2016 Diego Rossi (@_HellPie)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -19,14 +19,15 @@
     <string name="app_name">AutoDumPE 3.0</string>
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~ Activities ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <string name="activity_main">AutoDumPE 3.0</string>
     <string name="activity_dumpable_apps">Dumpable Apps</string>
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~ Packages List ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <string name="progress_dialog_loading_apps">Loading Apps…</string>
-    <string name="progress_dialog_loading">Loading Infos for:\n%s…</string>
+    <string name="progress_dialog_loading">Done loading Infos for:\n%s…</string>
     <string name="apps_list_tag_version">version: %s</string>
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~ Libraries Dialog ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <string name="libs_list_select_single">Select a library to decompile:</string>
+    <string name="libs_list_select">Select the libraries to decompile:</string>
+    <string name="libs_list_confirm">Okay</string>
+    <string name="libs_list_cancel">Cancel</string>
 </resources>

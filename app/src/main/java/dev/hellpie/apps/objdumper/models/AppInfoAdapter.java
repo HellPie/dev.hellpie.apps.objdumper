@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Diego Rossi (@_HellPie)
+ * Copyright 2016 Diego Rossi (@_HellPie)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,12 +25,19 @@ import java.util.List;
 
 import dev.hellpie.apps.objdumper.R;
 
+/**
+ * AppInfoAdapter class. This class contains code relative to the adapter of the RecyclerView
+ * containing the list of apps supporting JNI.
+ */
 public class AppInfoAdapter extends RecyclerView.Adapter<AppInfoViewHolder> {
 
+    // The list of apps supporting JNI as in form of a AppInfoHolder's List
     private List<AppInfoHolder> mData = new ArrayList<>();
 
     @Override
     public AppInfoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        // Build a new view based on the template and assign it to a ViewHolder immediately
         return new AppInfoViewHolder(
                 LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.template_list_package, parent, false)
@@ -39,43 +46,23 @@ public class AppInfoAdapter extends RecyclerView.Adapter<AppInfoViewHolder> {
 
     @Override
     public void onBindViewHolder(AppInfoViewHolder holder, int position) {
+
+        // Set the AppInfoHolder for a given AppInfoViewHolder
         holder.bindAppInfo(mData.get(position));
     }
 
     @Override
     public int getItemCount() {
+
+        // Return the dimensions of the list in the RecyclerView
         return mData.size();
     }
 
-    public AppInfoAdapter setAppInfos(List<AppInfoHolder> holders) {
-        for (AppInfoHolder holder : holders) {
-            addAppInfo(holder);
-        }
-
-        return this;
-    }
-
-    public AppInfoAdapter clearAppInfos() {
-        for (int i = mData.size() - 1; i >= 0; i--) {
-            removeAppInfo(i);
-        }
-
-        return this;
-    }
-
     public AppInfoAdapter addAppInfo(AppInfoHolder holder) {
+
+        // Add an AppInfoHolder to the list, update the list, done
         mData.add(holder);
         notifyItemInserted(mData.size() - 1);
         return this;
-    }
-
-    public AppInfoAdapter removeAppInfo(int position) {
-        mData.remove(position);
-        notifyItemRemoved(position);
-        return this;
-    }
-
-    public AppInfoAdapter removeAppInfo(AppInfoHolder holder) {
-        return removeAppInfo(mData.indexOf(holder));
     }
 }

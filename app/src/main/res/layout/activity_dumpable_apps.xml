@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2015 Diego Rossi (@_HellPie)
+  ~ Copyright 2016 Diego Rossi (@_HellPie)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -16,12 +16,9 @@
   -->
 
 <android.support.design.widget.CoordinatorLayout
-    android:id="@id/activity_dumpable_apps"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Dumper.Style"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context="dev.hellpie.apps.objdumper.ui.activities.DumpableAppsActivity">
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~ AppBar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->

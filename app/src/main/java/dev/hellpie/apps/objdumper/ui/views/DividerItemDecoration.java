@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Diego Rossi (@_HellPie)
+ * Copyright 2016 Diego Rossi (@_HellPie)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+/**
+ * Adds a divider between two items in a RecyclerView.
+ * <p/>
+ * Based on Google's code at:
+ * https://android.googlesource.com/platform/development/+/master/samples/Support7Demos/src/com/example/android/supportv7/widget/decorator/DividerItemDecoration.java
+ */
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {
 
     public static final int HORIZONTAL_LIST = LinearLayoutManager.HORIZONTAL;

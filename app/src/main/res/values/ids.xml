@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2015 Diego Rossi (@_HellPie)
+  ~ Copyright 2016 Diego Rossi (@_HellPie)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -16,17 +16,6 @@
   -->
 
 <resources>
-    <!--~~~~~~~~~~~~~~~~~~~~~~~ Activity ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <item name="activity_main" type="id"/>
-    <item name="activity_dumpable_apps" type="id"/>
-
-    <!--~~~~~~~~~~~~~~~~~~~~~~~ AppBar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <item name="layout_appbar" type="id"/>
-    <item name="layout_appbar_toolbar_collapsing" type="id"/>
-    <item name="layout_appbar_toolbar" type="id"/>
-
-    <!--~~~~~~~~~~~~~~~~~~~~~~~ FAB ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <item name="layout_appbar_fab" type="id"/>
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~ Packages List ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <item name="list_package_item" type="id"/>

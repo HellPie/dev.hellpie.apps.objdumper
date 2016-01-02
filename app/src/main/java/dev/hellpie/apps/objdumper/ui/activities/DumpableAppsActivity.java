@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Diego Rossi (@_HellPie)
+ * Copyright 2016 Diego Rossi (@_HellPie)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,51 +17,39 @@
 package dev.hellpie.apps.objdumper.ui.activities;
 
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 
 import dev.hellpie.apps.objdumper.R;
 import dev.hellpie.apps.objdumper.dumper.AsyncAppDetector;
 import dev.hellpie.apps.objdumper.models.AppInfoAdapter;
 import dev.hellpie.apps.objdumper.ui.views.DividerItemDecoration;
 
+/**
+ * DumpableAppsActivity class. This is the main activity of the application, it holds basic code
+ * to initialize the other classes of this app.
+ */
 public class DumpableAppsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dumpable_apps);
-        setSupportActionBar((Toolbar) findViewById(R.id.layout_appbar_toolbar));
 
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
+        // TODO: Marshmallow (6.0) new Permissions Model support
 
+        // Create a new adapter for the RecyclerView
         AppInfoAdapter adapter = new AppInfoAdapter();
 
+        // Get the RecyclerView from XML, assign it adapter, manager and decorators
         RecyclerView view = (RecyclerView) findViewById(R.id.window_content_scrollable);
         view.setLayoutManager(new LinearLayoutManager(this));
         view.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         view.setAdapter(adapter);
 
+        // Create a new AsyncAppDetector to load all the apps with JNI into the RecyclerView
         new AsyncAppDetector(this, adapter).execute();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            Intent intent = new Intent();
-            setResult(RESULT_CANCELED, intent);
-            finish();
-
-            return true;
-        } else {
-            return super.onOptionsItemSelected(item);
-        }
     }
 }

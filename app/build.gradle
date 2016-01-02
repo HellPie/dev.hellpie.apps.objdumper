@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Diego Rossi (@_HellPie)
+ * Copyright 2016 Diego Rossi (@_HellPie)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,8 +24,8 @@ android {
         applicationId "dev.hellpie.apps.objdumper"
         minSdkVersion 21
         targetSdkVersion 23
-        versionCode 2
-        versionName "0.7.8"
+        versionCode 3
+        versionName "0.8.0"
     }
 
     buildTypes {

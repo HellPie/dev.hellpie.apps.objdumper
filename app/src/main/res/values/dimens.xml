@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2015 Diego Rossi (@_HellPie)
+  ~ Copyright 2016 Diego Rossi (@_HellPie)
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -23,6 +23,8 @@
     <!--~~~~~~~~~~~~~~~~~~~~~~~ AppBar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <dimen name="appbar_height">192dp</dimen>
 
-    <!--~~~~~~~~~~~~~~~~~~~~~~~ FAB ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <dimen name="fab_margin">16dp</dimen>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~ Packages List ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <dimen name="list_package_height">60dp</dimen>
+    <dimen name="list_package_icon_size">40dp</dimen>
+    <dimen name="list_package_icon_margin">10dp</dimen>
 </resources>

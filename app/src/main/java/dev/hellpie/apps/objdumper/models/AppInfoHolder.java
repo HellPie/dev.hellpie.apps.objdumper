@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Diego Rossi (@_HellPie)
+ * Copyright 2016 Diego Rossi (@_HellPie)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,23 +21,23 @@ import android.graphics.drawable.Drawable;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * AppInfoHolder class. This class holds data relative to a single app.
+ */
 public class AppInfoHolder {
 
-    public static final String NAME = "APP_NAME";
-    public static final String ID = "APP_PACKAGE";
-    public static final String VERSION = "APP_VERSION";
-    public static final String PATH = "APP_PATH";
-
+    // Data used of the app this AppInfoHolder is referencing
     public String name;
     public String id;
     public String version;
     public String path;
     public ArrayList<File> libs;
-
     public Drawable icon;
 
     @Override
     public boolean equals(Object o) {
+
+        // An AppInfoViewHolder is the same as another one if it has same name or version
         return !(o == null || !o.getClass().equals(getClass()))
                 && name.equals(((AppInfoHolder) o).name)
                 && version.equals(((AppInfoHolder) o).version);
@@ -45,6 +45,9 @@ public class AppInfoHolder {
 
     @Override
     public int hashCode() {
+
+        // An AppInfoHolder is useless unless it has a name of an app bound to it, which also
+        // assumes all the other necessary data from that app is also stored in this holder
         return (name == null ? 0 : name.hashCode());
     }
 }

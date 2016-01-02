@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Diego Rossi (@_HellPie)
+ * Copyright 2016 Diego Rossi (@_HellPie)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,12 +35,25 @@ import dev.hellpie.apps.objdumper.R;
 import dev.hellpie.apps.objdumper.models.AppInfoAdapter;
 import dev.hellpie.apps.objdumper.models.AppInfoHolder;
 
+/**
+ * AsyncAppDetector class. This class holds code for asynchronously load each app with JNI
+ * libraries into the RecyclerView that contains said app's list.
+ */
 public class AsyncAppDetector extends AsyncTask<Void, AppInfoHolder, Void> {
 
-    private ProgressDialog dialog;
-    private AppInfoAdapter adapter;
+    // Elements shared with other functions in this AsyncTask
+    private final ProgressDialog dialog;
+    private final AppInfoAdapter adapter;
 
+    /**
+     * Constructor for AsyncAppDetector.
+     *
+     * @param activity       Activity to which the shown dialog should be bound
+     * @param appInfoAdapter AppInfoAdapter to which items should be added
+     */
     public AsyncAppDetector(Activity activity, AppInfoAdapter appInfoAdapter) {
+
+        // Setup dialog and save adapter for later use
         adapter = appInfoAdapter;
         dialog = new ProgressDialog(activity);
         dialog.setIndeterminate(true);
@@ -52,15 +65,19 @@ public class AsyncAppDetector extends AsyncTask<Void, AppInfoHolder, Void> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+
+        // Show dialog, fun begins!
         dialog.show();
     }
 
     @Override
     protected Void doInBackground(Void... params) {
 
+        // Get context, then from it get package manager
         final Context context = dialog.getContext();
         final PackageManager pm = context.getPackageManager();
 
+        // Store the list of apps from the package manager and sort them alphabetically
         List<PackageInfo> packages = pm.getInstalledPackages(0);
         Collections.sort(packages, new Comparator<PackageInfo>() {
             @Override
@@ -72,13 +89,19 @@ public class AsyncAppDetector extends AsyncTask<Void, AppInfoHolder, Void> {
             }
         });
 
+        // Run this for each app in the list
         for (PackageInfo pkgInfo : packages) {
+
+            // Get ApplicationInfos for the app and skip it if it's null or if system app
             ApplicationInfo appInfo = pkgInfo.applicationInfo;
             if (appInfo == null || (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) continue;
 
+            // Get libraries in the native directory, since we only want to elaborate apps
+            // using JNI, skip processing of the app if no libraries are found
             File libs[] = new File(appInfo.nativeLibraryDir).listFiles();
             if (libs == null || libs.length == 0) continue;
 
+            // Create a new AppInfoHolder and save the data from the app into it
             AppInfoHolder holder = new AppInfoHolder();
             holder.name = appInfo.loadLabel(pm).toString();
             holder.id = pkgInfo.packageName;
@@ -86,6 +109,7 @@ public class AsyncAppDetector extends AsyncTask<Void, AppInfoHolder, Void> {
             holder.path = appInfo.dataDir;
             holder.icon = appInfo.loadIcon(pm);
 
+            // Save libs and sort them alphabetically
             holder.libs = new ArrayList<>(Arrays.asList(libs));
             Collections.sort(holder.libs, new Comparator<File>() {
                 @Override
@@ -94,6 +118,7 @@ public class AsyncAppDetector extends AsyncTask<Void, AppInfoHolder, Void> {
                 }
             });
 
+            // Update the dialog with the parsed infos
             publishProgress(holder);
         }
 
@@ -103,6 +128,8 @@ public class AsyncAppDetector extends AsyncTask<Void, AppInfoHolder, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
+
+        // All done? Then remove the dialog
         dialog.dismiss();
     }
 
@@ -110,9 +137,11 @@ public class AsyncAppDetector extends AsyncTask<Void, AppInfoHolder, Void> {
     protected void onProgressUpdate(AppInfoHolder... values) {
         super.onProgressUpdate(values);
 
+        // Build message using app's name in the given holder
         String message = dialog.getContext().getString(R.string.progress_dialog_loading);
         dialog.setMessage(String.format(message, values[0].name));
 
+        // Add the parsed app into the adapter
         adapter.addAppInfo(values[0]);
     }
 }
