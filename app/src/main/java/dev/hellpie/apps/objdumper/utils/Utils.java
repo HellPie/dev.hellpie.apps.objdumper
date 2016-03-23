@@ -28,31 +28,32 @@ import android.view.View;
  */
 public class Utils {
 
-    /**
-     * Constructor for Utils.
-     * <p/>
-     * This constructor is private: this class should never be instantiated.
-     * All methods in this class should be declared as static.
-     */
-    private Utils() {
-    }
+	/**
+	 * Constructor for Utils.
+	 * <p/>
+	 * This constructor is private: this class should never be instantiated.
+	 * All methods in this class should be declared as static.
+	 */
+	private Utils() {
+	}
 
-    /**
-     * Returns the Activity that contains the given view if it exists, or null if the View
-     * isn't an Activity's child.
-     *
-     * @param view The View to which get the parent Activity from
-     * @return The container Activity of view, or null
-     */
-    @Nullable
-    public static Activity getActivity(@NonNull View view) {
-        Context context = view.getContext();
+	/**
+	 * Returns the Activity that contains the given view if it exists, or null if the View
+	 * isn't an Activity's child.
+	 *
+	 * @param view The View to which get the parent Activity from
+	 *
+	 * @return The container Activity of view, or null
+	 */
+	@Nullable
+	public static Activity getActivity(@NonNull View view) {
+		Context context = view.getContext();
 
-        while (context instanceof ContextWrapper) {
-            if (context instanceof Activity) return (Activity) context;
-            context = ((ContextWrapper) context).getBaseContext();
-        }
+		while(context instanceof ContextWrapper) {
+			if(context instanceof Activity) return (Activity) context;
+			context = ((ContextWrapper) context).getBaseContext();
+		}
 
-        return null;
-    }
+		return null;
+	}
 }

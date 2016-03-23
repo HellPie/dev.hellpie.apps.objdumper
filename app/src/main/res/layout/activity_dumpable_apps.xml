@@ -16,30 +16,30 @@
   -->
 
 <android.support.design.widget.CoordinatorLayout
-    style="@style/Dumper.Style"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="dev.hellpie.apps.objdumper.ui.activities.DumpableAppsActivity">
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		style="@style/Dumper.Style"
+		tools:context="dev.hellpie.apps.objdumper.ui.activities.DumpableAppsActivity">
 
-    <!--~~~~~~~~~~~~~~~~~~~~~~~ AppBar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <android.support.design.widget.AppBarLayout
-        style="@style/Dumper.Style.AppBarLayout">
+	<!--~~~~~~~~~~~~~~~~~~~~~~~ AppBar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<android.support.design.widget.AppBarLayout
+			style="@style/Dumper.Style.AppBarLayout">
 
-        <android.support.design.widget.CollapsingToolbarLayout
-            style="@style/Dumper.Style.Toolbar.Collapsing"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+		<android.support.design.widget.CollapsingToolbarLayout
+				style="@style/Dumper.Style.Toolbar.Collapsing"
+				app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <android.support.v7.widget.Toolbar
-                style="@style/Dumper.Style.Toolbar"
-                app:layout_collapseMode="pin"
-                app:title="@string/activity_dumpable_apps"/>
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
+			<android.support.v7.widget.Toolbar
+					style="@style/Dumper.Style.Toolbar"
+					app:layout_collapseMode="pin"
+					app:title="@string/activity_dumpable_apps"/>
+		</android.support.design.widget.CollapsingToolbarLayout>
+	</android.support.design.widget.AppBarLayout>
 
-    <!--~~~~~~~~~~~~~~~~~~~~~~~ Content ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~ Content ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-    <android.support.v7.widget.RecyclerView
-        style="@style/Dumper.Style.WindowContent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+	<android.support.v7.widget.RecyclerView
+			style="@style/Dumper.Style.WindowContent"
+			app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </android.support.design.widget.CoordinatorLayout>

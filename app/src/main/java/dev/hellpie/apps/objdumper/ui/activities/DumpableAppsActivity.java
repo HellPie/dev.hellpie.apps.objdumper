@@ -33,23 +33,25 @@ import dev.hellpie.apps.objdumper.ui.views.DividerItemDecoration;
  */
 public class DumpableAppsActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dumpable_apps);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_dumpable_apps);
 
-        // TODO: Marshmallow (6.0) new Permissions Model support
+		// TODO: Marshmallow (6.0) new Permissions Model support
 
-        // Create a new adapter for the RecyclerView
-        AppInfoAdapter adapter = new AppInfoAdapter();
+		// Create a new adapter for the RecyclerView
+		AppInfoAdapter adapter = new AppInfoAdapter();
 
-        // Get the RecyclerView from XML, assign it adapter, manager and decorators
-        RecyclerView view = (RecyclerView) findViewById(R.id.window_content_scrollable);
-        view.setLayoutManager(new LinearLayoutManager(this));
-        view.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-        view.setAdapter(adapter);
+		// Get the RecyclerView from XML, assign it adapter, manager and decorators
+		RecyclerView view = (RecyclerView) findViewById(R.id.window_content_scrollable);
+		if(view != null) {
+			view.setLayoutManager(new LinearLayoutManager(this));
+			view.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+			view.setAdapter(adapter);
+		}
 
-        // Create a new AsyncAppDetector to load all the apps with JNI into the RecyclerView
-        new AsyncAppDetector(this, adapter).execute();
-    }
+		// Create a new AsyncAppDetector to load all the apps with JNI into the RecyclerView
+		new AsyncAppDetector(this, adapter).execute();
+	}
 }

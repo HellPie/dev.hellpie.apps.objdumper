@@ -31,38 +31,38 @@ import dev.hellpie.apps.objdumper.R;
  */
 public class AppInfoAdapter extends RecyclerView.Adapter<AppInfoViewHolder> {
 
-    // The list of apps supporting JNI as in form of a AppInfoHolder's List
-    private List<AppInfoHolder> mData = new ArrayList<>();
+	// The list of apps supporting JNI as in form of a AppInfoHolder's List
+	private List<AppInfoHolder> mData = new ArrayList<>();
 
-    @Override
-    public AppInfoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+	@Override
+	public AppInfoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        // Build a new view based on the template and assign it to a ViewHolder immediately
-        return new AppInfoViewHolder(
-                LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.template_list_package, parent, false)
-        );
-    }
+		// Build a new view based on the template and assign it to a ViewHolder immediately
+		return new AppInfoViewHolder(
+				LayoutInflater.from(parent.getContext())
+						.inflate(R.layout.template_list_package, parent, false)
+		);
+	}
 
-    @Override
-    public void onBindViewHolder(AppInfoViewHolder holder, int position) {
+	@Override
+	public void onBindViewHolder(AppInfoViewHolder holder, int position) {
 
-        // Set the AppInfoHolder for a given AppInfoViewHolder
-        holder.bindAppInfo(mData.get(position));
-    }
+		// Set the AppInfoHolder for a given AppInfoViewHolder
+		holder.bindAppInfo(mData.get(position));
+	}
 
-    @Override
-    public int getItemCount() {
+	@Override
+	public int getItemCount() {
 
-        // Return the dimensions of the list in the RecyclerView
-        return mData.size();
-    }
+		// Return the dimensions of the list in the RecyclerView
+		return mData.size();
+	}
 
-    public AppInfoAdapter addAppInfo(AppInfoHolder holder) {
+	public AppInfoAdapter addAppInfo(AppInfoHolder holder) {
 
-        // Add an AppInfoHolder to the list, update the list, done
-        mData.add(holder);
-        notifyItemInserted(mData.size() - 1);
-        return this;
-    }
+		// Add an AppInfoHolder to the list, update the list, done
+		mData.add(holder);
+		notifyItemInserted(mData.size() - 1);
+		return this;
+	}
 }

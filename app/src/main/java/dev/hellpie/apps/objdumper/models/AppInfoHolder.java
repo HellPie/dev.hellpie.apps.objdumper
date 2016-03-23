@@ -26,28 +26,28 @@ import java.util.ArrayList;
  */
 public class AppInfoHolder {
 
-    // Data used of the app this AppInfoHolder is referencing
-    public String name;
-    public String id;
-    public String version;
-    public String path;
-    public ArrayList<File> libs;
-    public Drawable icon;
+	// Data used of the app this AppInfoHolder is referencing
+	public String name;
+	public String id;
+	public String version;
+	public String path;
+	public ArrayList<File> libs;
+	public Drawable icon;
 
-    @Override
-    public boolean equals(Object o) {
+	@Override
+	public boolean equals(Object o) {
 
-        // An AppInfoViewHolder is the same as another one if it has same name or version
-        return !(o == null || !o.getClass().equals(getClass()))
-                && name.equals(((AppInfoHolder) o).name)
-                && version.equals(((AppInfoHolder) o).version);
-    }
+		// An AppInfoViewHolder is the same as another one if it has same name or version
+		return !(o == null || !o.getClass().equals(getClass()))
+				&& name.equals(((AppInfoHolder) o).name)
+				&& version.equals(((AppInfoHolder) o).version);
+	}
 
-    @Override
-    public int hashCode() {
+	@Override
+	public int hashCode() {
 
-        // An AppInfoHolder is useless unless it has a name of an app bound to it, which also
-        // assumes all the other necessary data from that app is also stored in this holder
-        return (name == null ? 0 : name.hashCode());
-    }
+		// An AppInfoHolder is useless unless it has a name of an app bound to it, which also
+		// assumes all the other necessary data from that app is also stored in this holder
+		return (name == null ? 0 : name.hashCode());
+	}
 }

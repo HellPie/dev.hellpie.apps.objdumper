@@ -17,89 +17,89 @@
 
 <resources>
 
-    <style name="Dumper"><!-- Placeholder --></style>
+	<style name="Dumper"><!-- Placeholder --></style>
 
-    <!--~~~~~~~~~~~~~~~~~~~~~~~ Themes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <style name="Dumper.Theme"><!-- Placeholder --></style>
+	<!--~~~~~~~~~~~~~~~~~~~~~~~ Themes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<style name="Dumper.Theme"><!-- Placeholder --></style>
 
-    <style name="Dumper.Theme.Main" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorPrimary">@color/colorTextPrimary</item>
-        <item name="android:background">@color/colorBackground</item>
-    </style>
+	<style name="Dumper.Theme.Main" parent="Theme.AppCompat.Light.NoActionBar">
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+		<item name="android:textColorPrimary">@color/colorTextPrimary</item>
+		<item name="android:background">@color/colorBackground</item>
+	</style>
 
-    <style name="Dumper.Theme.Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:textColorPrimary">@color/colorAppbarTitle</item>
-        <item name="android:background">@color/colorPrimary</item>
-    </style>
+	<style name="Dumper.Theme.Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+		<item name="android:textColorPrimary">@color/colorAppbarTitle</item>
+		<item name="android:background">@color/colorPrimary</item>
+	</style>
 
-    <!--~~~~~~~~~~~~~~~~~~~~~~~ Styles ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <style name="Dumper.Style">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-    </style>
+	<!--~~~~~~~~~~~~~~~~~~~~~~~ Styles ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<style name="Dumper.Style">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">match_parent</item>
+	</style>
 
-    <style name="Dumper.Style.AppBarLayout" parent="Dumper.Style">
-        <item name="android:layout_height">@dimen/appbar_height</item>
-    </style>
+	<style name="Dumper.Style.AppBarLayout" parent="Dumper.Style">
+		<item name="android:layout_height">@dimen/appbar_height</item>
+	</style>
 
-    <style name="Dumper.Style.Toolbar" parent="Dumper.Style">
-        <item name="android:layout_height">?attr/actionBarSize</item>
-        <item name="android:theme">@style/Dumper.Theme.Toolbar</item>
-        <item name="android:background">?attr/colorPrimary</item>
-        <item name="android:textColorPrimary">@color/colorAppbarTitle</item>
-    </style>
+	<style name="Dumper.Style.Toolbar" parent="Dumper.Style">
+		<item name="android:layout_height">?attr/actionBarSize</item>
+		<item name="android:theme">@style/Dumper.Theme.Toolbar</item>
+		<item name="android:background">?attr/colorPrimary</item>
+		<item name="android:textColorPrimary">@color/colorAppbarTitle</item>
+	</style>
 
-    <style name="Dumper.Style.Toolbar.Collapsing" parent="Dumper.Style.Toolbar">
-        <item name="android:layout_height">match_parent</item>
-    </style>
+	<style name="Dumper.Style.Toolbar.Collapsing" parent="Dumper.Style.Toolbar">
+		<item name="android:layout_height">match_parent</item>
+	</style>
 
-    <style name="Dumper.Style.WindowContent" parent="Dumper.Style">
-        <item name="android:id">@id/window_content_scrollable</item>
-    </style>
+	<style name="Dumper.Style.WindowContent" parent="Dumper.Style">
+		<item name="android:id">@id/window_content_scrollable</item>
+	</style>
 
-    <style name="Dumper.Style.ListElement">
-        <item name="android:id">@id/list_package_item</item>
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">@dimen/list_package_height</item>
-        <item name="android:background">?android:attr/selectableItemBackground</item>
-    </style>
+	<style name="Dumper.Style.ListElement">
+		<item name="android:id">@id/list_package_item</item>
+		<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">@dimen/list_package_height</item>
+		<item name="android:background">?android:attr/selectableItemBackground</item>
+	</style>
 
-    <style name="Dumper.Style.ListElement.Icon">
-        <item name="android:id">@id/list_package_item_icon</item>
-        <item name="android:layout_width">@dimen/list_package_icon_size</item>
-        <item name="android:layout_height">@dimen/list_package_icon_size</item>
-        <item name="android:layout_margin">@dimen/list_package_icon_margin</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:scaleType">fitCenter</item>
-    </style>
+	<style name="Dumper.Style.ListElement.Icon">
+		<item name="android:id">@id/list_package_item_icon</item>
+		<item name="android:layout_width">@dimen/list_package_icon_size</item>
+		<item name="android:layout_height">@dimen/list_package_icon_size</item>
+		<item name="android:layout_margin">@dimen/list_package_icon_margin</item>
+		<item name="android:background">@android:color/transparent</item>
+		<item name="android:scaleType">fitCenter</item>
+	</style>
 
-    <style name="Dumper.Style.ListElement.Content">
-        <item name="android:orientation">vertical</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_centerVertical">true</item>
-        <item name="android:layout_toEndOf">@id/list_package_item_icon</item>
-        <item name="android:layout_toRightOf">@id/list_package_item_icon</item>
-        <item name="android:background">@android:color/transparent</item>
-    </style>
+	<style name="Dumper.Style.ListElement.Content">
+		<item name="android:orientation">vertical</item>
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_centerVertical">true</item>
+		<item name="android:layout_toEndOf">@id/list_package_item_icon</item>
+		<item name="android:layout_toRightOf">@id/list_package_item_icon</item>
+		<item name="android:background">@android:color/transparent</item>
+	</style>
 
-    <style name="Dumper.Style.ListElement.Content.Name">
-        <item name="android:id">@id/list_package_item_name</item>
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:textAppearance">?android:textAppearanceMedium</item>
-    </style>
+	<style name="Dumper.Style.ListElement.Content.Name">
+		<item name="android:id">@id/list_package_item_name</item>
+		<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:background">@android:color/transparent</item>
+		<item name="android:textAppearance">?android:textAppearanceMedium</item>
+	</style>
 
-    <style name="Dumper.Style.ListElement.Content.Version">
-        <item name="android:id">@id/list_package_item_version</item>
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:textAppearance">?android:textAppearanceSmall</item>
-    </style>
+	<style name="Dumper.Style.ListElement.Content.Version">
+		<item name="android:id">@id/list_package_item_version</item>
+		<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:background">@android:color/transparent</item>
+		<item name="android:textAppearance">?android:textAppearanceSmall</item>
+	</style>
 
 </resources>

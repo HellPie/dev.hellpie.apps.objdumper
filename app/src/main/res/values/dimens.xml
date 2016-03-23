@@ -15,16 +15,16 @@
   -->
 
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="fab_normal_size">56dp</dimen>
+	<!-- Default screen margins, per the Android Design guidelines. -->
+	<dimen name="activity_horizontal_margin">16dp</dimen>
+	<dimen name="activity_vertical_margin">16dp</dimen>
+	<dimen name="fab_normal_size">56dp</dimen>
 
-    <!--~~~~~~~~~~~~~~~~~~~~~~~ AppBar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <dimen name="appbar_height">192dp</dimen>
+	<!--~~~~~~~~~~~~~~~~~~~~~~~ AppBar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<dimen name="appbar_height">192dp</dimen>
 
-    <!--~~~~~~~~~~~~~~~~~~~~~~~ Packages List ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <dimen name="list_package_height">60dp</dimen>
-    <dimen name="list_package_icon_size">40dp</dimen>
-    <dimen name="list_package_icon_margin">10dp</dimen>
+	<!--~~~~~~~~~~~~~~~~~~~~~~~ Packages List ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<dimen name="list_package_height">60dp</dimen>
+	<dimen name="list_package_icon_size">40dp</dimen>
+	<dimen name="list_package_icon_margin">10dp</dimen>
 </resources>

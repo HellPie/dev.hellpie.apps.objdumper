@@ -30,145 +30,145 @@ import dev.hellpie.apps.objdumper.models.AppInfoHolder;
  */
 public class LibrariesListeners {
 
-    // Holds the holder of the infos of the libraries and app of the libraries dialog
-    private AppInfoHolder holder;
-    private Activity activity;
+	// Holds the holder of the infos of the libraries and app of the libraries dialog
+	private AppInfoHolder holder;
+	private Activity activity;
 
-    // Holds the selected items in the libraries dialog
-    private ArrayList<File> selected = new ArrayList<>();
+	// Holds the selected items in the libraries dialog
+	private ArrayList<File> selected = new ArrayList<>();
 
-    /**
-     * Constructor for LibrariesListeners.
-     *
-     * @param activity The Activity to which this class is bound to
-     * @param holder   The AppInfoHolder of the selected item in the RecyclerView
-     */
-    public LibrariesListeners(Activity activity, AppInfoHolder holder) {
-        this.activity = activity;
-        this.holder = holder;
-    }
+	/**
+	 * Constructor for LibrariesListeners.
+	 *
+	 * @param activity The Activity to which this class is bound to
+	 * @param holder   The AppInfoHolder of the selected item in the RecyclerView
+	 */
+	public LibrariesListeners(Activity activity, AppInfoHolder holder) {
+		this.activity = activity;
+		this.holder = holder;
+	}
 
-    /**
-     * Adds an element to the ArrayList representing the selected items in a dialog.
-     *
-     * @param which The index of the item to add into the ArrayList.
-     */
-    private void onSelect(int which) {
-        selected.add(holder.libs.get(which));
-    }
+	/**
+	 * Adds an element to the ArrayList representing the selected items in a dialog.
+	 *
+	 * @param which The index of the item to add into the ArrayList.
+	 */
+	private void onSelect(int which) {
+		selected.add(holder.libs.get(which));
+	}
 
-    /**
-     * Removes an element to the ArrayList representing the selected items in a dialog.
-     *
-     * @param which The index of the item to remove from the ArrayList.
-     */
-    private void onUnselect(int which) {
-        selected.remove(holder.libs.get(which));
-    }
+	/**
+	 * Removes an element to the ArrayList representing the selected items in a dialog.
+	 *
+	 * @param which The index of the item to remove from the ArrayList.
+	 */
+	private void onUnselect(int which) {
+		selected.remove(holder.libs.get(which));
+	}
 
-    /**
-     * Given a dialog, this method dismisses it, then it creates a new AsyncDumper and starts
-     * executing it passing all the selected items in the given dialog.
-     *
-     * @param dialog The DialogInterface to dismiss
-     */
-    private void onConfirm(DialogInterface dialog) {
-        dialog.dismiss();
+	/**
+	 * Given a dialog, this method dismisses it, then it creates a new AsyncDumper and starts
+	 * executing it passing all the selected items in the given dialog.
+	 *
+	 * @param dialog The DialogInterface to dismiss
+	 */
+	private void onConfirm(DialogInterface dialog) {
+		dialog.dismiss();
 
-        // If no items selected, no need to continue
-        if (selected.isEmpty()) return;
+		// If no items selected, no need to continue
+		if(selected.isEmpty()) return;
 
-        // TODO: Run a new AsyncDumper
-    }
+		// TODO: Run a new AsyncDumper
+	}
 
-    /**
-     * Dismisses a Dialog.
-     *
-     * @param dialog The DialogInterface to dismiss
-     */
-    private void onCancel(DialogInterface dialog) {
-        dialog.dismiss();
-    }
+	/**
+	 * Dismisses a Dialog.
+	 *
+	 * @param dialog The DialogInterface to dismiss
+	 */
+	private void onCancel(DialogInterface dialog) {
+		dialog.dismiss();
+	}
 
-    /**
-     * OnUpdate class. This class provides a OnMultiChoiceClickListener for a dialog.
-     * <p/>
-     * This class must be binded to a LibrariesListener as it works only as a
-     * bridge between a Dialog and the LibrariesListeners class.
-     */
-    public static class OnUpdate implements DialogInterface.OnMultiChoiceClickListener {
+	/**
+	 * OnUpdate class. This class provides a OnMultiChoiceClickListener for a dialog.
+	 * <p/>
+	 * This class must be binded to a LibrariesListener as it works only as a
+	 * bridge between a Dialog and the LibrariesListeners class.
+	 */
+	public static class OnUpdate implements DialogInterface.OnMultiChoiceClickListener {
 
-        // The LibrariesListener this listener is bound to
-        private final LibrariesListeners listener;
+		// The LibrariesListener this listener is bound to
+		private final LibrariesListeners listener;
 
-        /**
-         * Constructor for OnUpdate.
-         *
-         * @param listener The LibrariesListener to which this listener should be bound to
-         */
-        public OnUpdate(LibrariesListeners listener) {
-            this.listener = listener;
-        }
+		/**
+		 * Constructor for OnUpdate.
+		 *
+		 * @param listener The LibrariesListener to which this listener should be bound to
+		 */
+		public OnUpdate(LibrariesListeners listener) {
+			this.listener = listener;
+		}
 
-        @Override
-        public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-            if (isChecked) {
-                listener.onSelect(which);
-            } else {
-                listener.onUnselect(which);
-            }
-        }
-    }
+		@Override
+		public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+			if(isChecked) {
+				listener.onSelect(which);
+			} else {
+				listener.onUnselect(which);
+			}
+		}
+	}
 
-    /**
-     * OnConfirm class. This class provides a OnClickListener for a dialog's positive button.
-     * <p/>
-     * This class must be binded to a LibrariesListener as it works only as a
-     * bridge between a Dialog and the LibrariesListeners class.
-     */
-    public static class OnConfirm implements DialogInterface.OnClickListener {
+	/**
+	 * OnConfirm class. This class provides a OnClickListener for a dialog's positive button.
+	 * <p/>
+	 * This class must be binded to a LibrariesListener as it works only as a
+	 * bridge between a Dialog and the LibrariesListeners class.
+	 */
+	public static class OnConfirm implements DialogInterface.OnClickListener {
 
-        // The LibrariesListener this listener is bound to
-        private final LibrariesListeners listener;
+		// The LibrariesListener this listener is bound to
+		private final LibrariesListeners listener;
 
-        /**
-         * Constructor for OnConfirm.
-         *
-         * @param listener The LibrariesListener to which this listener should be bound to
-         */
-        public OnConfirm(LibrariesListeners listener) {
-            this.listener = listener;
-        }
+		/**
+		 * Constructor for OnConfirm.
+		 *
+		 * @param listener The LibrariesListener to which this listener should be bound to
+		 */
+		public OnConfirm(LibrariesListeners listener) {
+			this.listener = listener;
+		}
 
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            listener.onConfirm(dialog);
-        }
-    }
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			listener.onConfirm(dialog);
+		}
+	}
 
-    /**
-     * OnCancel class. This class provides a OnClickListener for a dialog's negative button.
-     * <p/>
-     * This class must be binded to a LibrariesListener as it works only as a
-     * bridge between a Dialog and the LibrariesListeners class.
-     */
-    public static class OnCancel implements DialogInterface.OnClickListener {
+	/**
+	 * OnCancel class. This class provides a OnClickListener for a dialog's negative button.
+	 * <p/>
+	 * This class must be binded to a LibrariesListener as it works only as a
+	 * bridge between a Dialog and the LibrariesListeners class.
+	 */
+	public static class OnCancel implements DialogInterface.OnClickListener {
 
-        // The LibrariesListener this listener is bound to
-        private final LibrariesListeners listener;
+		// The LibrariesListener this listener is bound to
+		private final LibrariesListeners listener;
 
-        /**
-         * Constructor for OnCancel.
-         *
-         * @param listener The LibrariesListener to which this listener should be bound to
-         */
-        public OnCancel(LibrariesListeners listener) {
-            this.listener = listener;
-        }
+		/**
+		 * Constructor for OnCancel.
+		 *
+		 * @param listener The LibrariesListener to which this listener should be bound to
+		 */
+		public OnCancel(LibrariesListeners listener) {
+			this.listener = listener;
+		}
 
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            listener.onCancel(dialog);
-        }
-    }
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			listener.onCancel(dialog);
+		}
+	}
 }

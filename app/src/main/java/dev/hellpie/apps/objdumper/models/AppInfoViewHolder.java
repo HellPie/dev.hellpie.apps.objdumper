@@ -29,55 +29,56 @@ import dev.hellpie.apps.objdumper.ui.listeners.OnAppInfoClickListener;
  */
 public class AppInfoViewHolder extends RecyclerView.ViewHolder {
 
-    // UI Elements in each view into the libraries list
-    public final TextView name;
-    public final TextView version;
-    public final ImageView icon;
+	// UI Elements in each view into the libraries list
+	public final TextView name;
+	public final TextView version;
+	public final ImageView icon;
 
-    // Holds a reference to the infos of the App this ViewHolder is bound to
-    private AppInfoHolder holder;
+	// Holds a reference to the infos of the App this ViewHolder is bound to
+	private AppInfoHolder holder;
 
-    /**
-     * Constructor for AppInfoViewHolder.
-     *
-     * @param view The view to which this ViewHolder is bound to
-     */
-    public AppInfoViewHolder(View view) {
-        super(view);
+	/**
+	 * Constructor for AppInfoViewHolder.
+	 *
+	 * @param view The view to which this ViewHolder is bound to
+	 */
+	public AppInfoViewHolder(View view) {
+		super(view);
 
-        // Get UI elements from view and store references
-        name = (TextView) view.findViewById(R.id.list_package_item_name);
-        version = (TextView) view.findViewById(R.id.list_package_item_version);
-        icon = (ImageView) view.findViewById(R.id.list_package_item_icon);
+		// Get UI elements from view and store references
+		name = (TextView) view.findViewById(R.id.list_package_item_name);
+		version = (TextView) view.findViewById(R.id.list_package_item_version);
+		icon = (ImageView) view.findViewById(R.id.list_package_item_icon);
 
-        // Apply listener to view so that we know when user clicks on it in the list
-        view.setOnClickListener(new OnAppInfoClickListener(this));
-    }
+		// Apply listener to view so that we know when user clicks on it in the list
+		view.setOnClickListener(new OnAppInfoClickListener(this));
+	}
 
-    /**
-     * Binds an AppInfoHolder to this AppInfoViewHolder and loads its data into the UI elements.
-     *
-     * @param holder The holder to bind to this AppInfoViewHolder
-     * @return Returns itself
-     */
-    public AppInfoViewHolder bindAppInfo(AppInfoHolder holder) {
+	/**
+	 * Binds an AppInfoHolder to this AppInfoViewHolder and loads its data into the UI elements.
+	 *
+	 * @param holder The holder to bind to this AppInfoViewHolder
+	 *
+	 * @return Returns itself
+	 */
+	public AppInfoViewHolder bindAppInfo(AppInfoHolder holder) {
 
-        // Store holder
-        this.holder = holder;
+		// Store holder
+		this.holder = holder;
 
-        // Set data on UI Elements and done
-        name.setText(holder.name);
-        version.setText(String.format(version.getContext().getString(R.string.apps_list_tag_version), holder.version));
-        icon.setImageDrawable(holder.icon);
-        return this;
-    }
+		// Set data on UI Elements and done
+		name.setText(holder.name);
+		version.setText(String.format(version.getContext().getString(R.string.apps_list_tag_version), holder.version));
+		icon.setImageDrawable(holder.icon);
+		return this;
+	}
 
-    /**
-     * Returns this AppInfoHolder this AppInfoViewHolder is bound to.
-     *
-     * @return The AppInfoHolder this AppInfoViewHolder is bound to
-     */
-    public AppInfoHolder getHolder() {
-        return holder;
-    }
+	/**
+	 * Returns this AppInfoHolder this AppInfoViewHolder is bound to.
+	 *
+	 * @return The AppInfoHolder this AppInfoViewHolder is bound to
+	 */
+	public AppInfoHolder getHolder() {
+		return holder;
+	}
 }
