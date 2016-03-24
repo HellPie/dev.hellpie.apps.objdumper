@@ -16,6 +16,7 @@
   -->
 
 <android.support.design.widget.CoordinatorLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		xmlns:tools="http://schemas.android.com/tools"
 		style="@style/Dumper.Style"
@@ -30,6 +31,7 @@
 				app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 			<android.support.v7.widget.Toolbar
+					android:id="@id/window_appbar_toolbar"
 					style="@style/Dumper.Style.Toolbar"
 					app:layout_collapseMode="pin"
 					app:title="@string/activity_dumpable_apps"/>
@@ -39,7 +41,8 @@
 	<!--~~~~~~~~~~~~~~~~~~~~~~~ Content ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 	<android.support.v7.widget.RecyclerView
-			style="@style/Dumper.Style.WindowContent"
+			android:id="@id/window_content_scrollable"
+			style="@style/Dumper.Style"
 			app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </android.support.design.widget.CoordinatorLayout>

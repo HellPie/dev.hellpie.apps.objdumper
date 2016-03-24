@@ -16,21 +16,24 @@
   -->
 
 
-<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				xmlns:tools="http://schemas.android.com/tools"
+				android:id="@id/list_package_item"
 				style="@style/Dumper.Style.ListElement">
 
 	<ImageView
+			android:id="@id/list_package_item_icon"
 			style="@style/Dumper.Style.ListElement.Icon"
 			tools:ignore="ContentDescription"/>
 
-	<LinearLayout
-			style="@style/Dumper.Style.ListElement.Content"
-			tools:ignore="RtlHardcoded">
+	<LinearLayout style="@style/Dumper.Style.ListElement.Content">
 
 		<TextView
+				android:id="@id/list_package_item_name"
 				style="@style/Dumper.Style.ListElement.Content.Name"/>
 
 		<TextView
+				android:id="@id/list_package_item_version"
 				style="@style/Dumper.Style.ListElement.Content.Version"/>
 	</LinearLayout>
 </RelativeLayout>

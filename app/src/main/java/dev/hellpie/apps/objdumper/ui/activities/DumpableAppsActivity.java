@@ -17,10 +17,13 @@
 package dev.hellpie.apps.objdumper.ui.activities;
 
 
+import android.app.ActivityManager;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 
 import dev.hellpie.apps.objdumper.R;
 import dev.hellpie.apps.objdumper.dumper.AsyncAppDetector;
@@ -33,10 +36,19 @@ import dev.hellpie.apps.objdumper.ui.views.DividerItemDecoration;
  */
 public class DumpableAppsActivity extends AppCompatActivity {
 
+	@SuppressWarnings("deprecation") // .getColor(int) is @Deprecated, but only after M (API23+)
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dumpable_apps);
+
+		// Fix the color in the recent apps list not being the dark shade
+		setSupportActionBar((Toolbar) findViewById(R.id.window_appbar_toolbar));
+		setTaskDescription(new ActivityManager.TaskDescription(
+				getString(R.string.app_name),
+				BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher),
+				getResources().getColor(R.color.colorPrimaryDark)
+		));
 
 		// TODO: Marshmallow (6.0) new Permissions Model support
 

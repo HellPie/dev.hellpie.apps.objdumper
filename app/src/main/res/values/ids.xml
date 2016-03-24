@@ -24,5 +24,6 @@
 	<item name="list_package_item_version" type="id"/>
 
 	<!--~~~~~~~~~~~~~~~~~~~~~~~ Windows ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<item name="window_appbar_toolbar" type="id"/>
 	<item name="window_content_scrollable" type="id"/>
 </resources>

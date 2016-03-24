@@ -27,7 +27,6 @@
 		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 		<item name="colorAccent">@color/colorAccent</item>
 		<item name="android:textColorPrimary">@color/colorTextPrimary</item>
-		<item name="android:background">@color/colorBackground</item>
 	</style>
 
 	<style name="Dumper.Theme.Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -56,19 +55,13 @@
 		<item name="android:layout_height">match_parent</item>
 	</style>
 
-	<style name="Dumper.Style.WindowContent" parent="Dumper.Style">
-		<item name="android:id">@id/window_content_scrollable</item>
-	</style>
-
 	<style name="Dumper.Style.ListElement">
-		<item name="android:id">@id/list_package_item</item>
 		<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">@dimen/list_package_height</item>
 		<item name="android:background">?android:attr/selectableItemBackground</item>
 	</style>
 
 	<style name="Dumper.Style.ListElement.Icon">
-		<item name="android:id">@id/list_package_item_icon</item>
 		<item name="android:layout_width">@dimen/list_package_icon_size</item>
 		<item name="android:layout_height">@dimen/list_package_icon_size</item>
 		<item name="android:layout_margin">@dimen/list_package_icon_margin</item>
@@ -87,7 +80,6 @@
 	</style>
 
 	<style name="Dumper.Style.ListElement.Content.Name">
-		<item name="android:id">@id/list_package_item_name</item>
 		<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:background">@android:color/transparent</item>
@@ -95,7 +87,6 @@
 	</style>
 
 	<style name="Dumper.Style.ListElement.Content.Version">
-		<item name="android:id">@id/list_package_item_version</item>
 		<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:background">@android:color/transparent</item>
