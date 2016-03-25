@@ -14,4 +14,22 @@
  * limitations under the License.
  */
 
-include ':app', ':utils-perms'
+package dev.hellpie.libs.utils.piemissions.models;
+
+import java.util.HashMap;
+
+import dev.hellpie.libs.utils.piemissions.PiemissionsCallback;
+
+/**
+ * Provides a blank implementation of PiemissionsCallback
+ */
+public class BasePiemissionsCallback implements PiemissionsCallback {
+	@Override
+	public void onGranted() {
+	}
+
+	@Override
+	public boolean onDenied(HashMap<String, Boolean> ratPerms) {
+		return false;
+	}
+}
