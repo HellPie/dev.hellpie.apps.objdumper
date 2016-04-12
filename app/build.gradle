@@ -14,31 +14,151 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.model.application'
 
-android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+model {
+	android {
+		compileSdkVersion 23
+		buildToolsVersion "23.0.3"
 
-    defaultConfig {
-        applicationId "dev.hellpie.apps.objdumper"
-        minSdkVersion 21
-        targetSdkVersion 23
-        versionCode 3
-        versionName "0.8.0"
-    }
+		/**
+		 * SELF-INCREMENTING VERSION CODES AND NAMES
+		 * Copyright (c) Diego "@_HellPie" Rossi (2015-2016)
+		 */
+		def task = gradle.startParameter.taskNames
+		def versioningFile = file('version.properties')
+		if(versioningFile.canRead()) {
+			def Properties versionProperties = new Properties()
+			versionProperties.load(new FileInputStream(versioningFile))
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+			// Recognize release builds based on Gradle task name
+			def release = ('assemble' in task || 'assembleRelease' in task || 'aR' in task)
+
+			def verMajor = versionProperties['VERSION_MAJOR'].toInteger() + (release ? 1 : 0)
+			def verMinor = versionProperties['VERSION_MINOR'].toInteger()
+			def verRevision = versionProperties['VERSION_REVISION'].toInteger()
+			def verBuild = versionProperties['VERSION_BUILD'].toInteger() + 1
+
+			if(verBuild % 100 == 0 && verBuild != 0) {
+				verRevision += 1
+			}
+
+			if(verRevision % 10 == 0 && verRevision != 0) {
+				verRevision = 0
+				verMinor += 1
+			}
+
+			// Store all the updated properties back into the file
+			versionProperties['VERSION_MAJOR'] = verMajor.toString()
+			versionProperties['VERSION_MINOR'] = verMinor.toString()
+			versionProperties['VERSION_REVISION'] = verRevision.toString()
+			versionProperties['VERSION_BUILD'] = verBuild.toString()
+			versionProperties.store(versioningFile.newWriter(), null)
+
+			// Build actual versionCode and versionName from read values
+			def int verCode = verMajor * 100 + verMinor
+			def String verName = "${verMajor}.${verMinor}.${verRevision}.${verBuild}"
+
+			// If debug I like to see the builder machine infos
+			if(!release) {
+				verName += " " + System.getenv('USER') + "@" + InetAddress.getLocalHost().getHostName()
+			}
+
+			defaultConfig {
+				applicationId "dev.hellpie.apps.objdumper"
+				minSdkVersion.apiLevel 21
+				targetSdkVersion.apiLevel 22
+				versionCode verCode
+				versionName verName
+			}
+
+		} else {
+			throw new GradleException("Unable to read version.properties!")
+		}
+
+		ndk {
+			moduleName "objdumper"
+
+			toolchain "clang"
+
+			CFlags.add("-DCUSTOM_DEFINE")
+			cppFlags.addAll(["-std=c++11"])
+			ldFlags.add("-L/custom/lib/path")
+			ldLibs.add("log")
+
+			stl "gnustl_shared"
+		}
+
+//		/**
+//		 * SELF-GENERATING FLAVORS
+//		 * Copyright (c) Diego "@_HellPie" Rossi (2015-2016)
+//		 */
+//		productFlavors.create("auto") // Empty: all abis
+//		if(!('assemble' in task || 'assembleRelease' in task || 'aR' in task)) { // release build
+//			productFlavors.auto {
+//				ndk.abiFilters.add("armeabi-v7a") // I use only armv7 devices, speeds up build
+//			}
+//		}
+//
+//		/**
+//		 * SELF-SIGNING APPLICATION
+//		 * Copyright (c) Diego "@_HellPie" Rossi (2015-2016)
+//		 */
+//		signingConfigs {
+//			create("auto")
+//
+//			create("missing") {
+//				storeFile file('../missing.jks')
+//				storePassword 'REAL_KEYSTORE_NOT_FOUND'
+//				keyAlias 'REAL_KEYSTORE_NOT_FOUND'
+//				keyPassword 'REAL_KEYSTORE_NOT_FOUND'
+//			}
+//		}
+//		def signingFile = file('../../../signing.properties')
+//		if(signingFile.canRead()) {
+//			def Properties signingProperties = new Properties()
+//			signingProperties.load(new FileInputStream(signingFile))
+//
+//			signingConfigs.debug.setStoreFile(file(signingProperties['KEY_DEBUG_PATH']))
+//			signingConfigs.debug.setStorePassword(signingProperties['KEY_DEBUG_PASSWORD'])
+//			signingConfigs.debug.setKeyAlias(signingProperties['KEY_DEBUG_ALIAS_USERNAME'])
+//			signingConfigs.debug.setKeyPassword(signingProperties['KEY_DEBUG_ALIAS_PASSWORD'])
+//
+//			signingConfigs.release.setStoreFile(file(signingProperties['KEY_RELEASE_PATH']))
+//			signingConfigs.release.setStorePassword(signingProperties['KEY_RELEASE_PASSWORD'])
+//			signingConfigs.release.setKeyAlias(signingProperties['KEY_RELEASE_ALIAS_USERNAME'])
+//			signingConfigs.release.setKeyPassword(signingProperties['KEY_RELEASE_ALIAS_PASSWORD'])
+//		} else {
+//			throw new GradleException("Unable to read signing.properties!")
+//		}
+//
+//		/**
+//		 * SELF-GENERATING BUILD TYPES
+//		 * Copyright (c) Diego "@_HellPie" Rossi (2015-2016)
+//		 */
+		buildTypes {
+			debug {}
+			release {
+				minifyEnabled = true
+				proguardFiles.add(file('proguard-rules.pro'))
+			}
+		}
+//		if(signingFile.canRead()) {
+//			buildTypes.debug.signingConfig = signingConfigs.debug
+//			buildTypes.release.signingConfig = signingConfigs.release
+//		} else {
+//			if('assemble' in task || 'assembleRelease' in task || 'aR' in task) {
+//				throw new GradleException("Unable to read signing.properties!")
+//			} else {
+//				buildTypes.debug.signingConfig = signingConfigs.missing
+//			}
+//		}
+	}
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:support-annotations:23.2.1'
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.android.support:design:23.2.1'
+	compile 'com.android.support:support-annotations:23.3.0'
+	compile 'com.android.support:appcompat-v7:23.3.0'
+	compile 'com.android.support:design:23.3.0'
 }
