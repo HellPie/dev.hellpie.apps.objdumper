@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.model.application'
+apply plugin: 'com.android.model.library'
 
 model {
 	android {
@@ -65,8 +65,7 @@ model {
 			}
 
 			defaultConfig {
-				applicationId "dev.hellpie.apps.objdumper"
-				minSdkVersion.apiLevel 21
+				minSdkVersion.apiLevel 19
 				targetSdkVersion.apiLevel 22
 				versionCode verCode
 				versionName verName
@@ -76,65 +75,38 @@ model {
 			throw new GradleException("Unable to read version.properties!")
 		}
 
-//
+		ndk {
+			moduleName "elf-analyzer"
+
+			toolchain "clang"
+
+			cppFlags.addAll(["-std=c++11"])
+			ldFlags.add("-L/custom/lib/path")
+			ldLibs.add("log")
+
+			stl "gnustl_shared"
+		}
+
 //		/**
-//		 * SELF-SIGNING APPLICATION
+//		 * SELF-GENERATING FLAVORS
 //		 * Copyright (c) Diego "@_HellPie" Rossi (2015-2016)
 //		 */
-//		signingConfigs {
-//			create("auto")
-//
-//			create("missing") {
-//				storeFile file('../missing.jks')
-//				storePassword 'REAL_KEYSTORE_NOT_FOUND'
-//				keyAlias 'REAL_KEYSTORE_NOT_FOUND'
-//				keyPassword 'REAL_KEYSTORE_NOT_FOUND'
+//		productFlavors.create("auto") // Empty: all abis
+//		if(!('assemble' in task || 'assembleRelease' in task || 'aR' in task)) { // release build
+//			productFlavors.auto {
+//				ndk.abiFilters.add("armeabi-v7a") // I use only armv7 devices, speeds up build
 //			}
 //		}
-//		def signingFile = file('../../../signing.properties')
-//		if(signingFile.canRead()) {
-//			def Properties signingProperties = new Properties()
-//			signingProperties.load(new FileInputStream(signingFile))
-//
-//			signingConfigs.debug.setStoreFile(file(signingProperties['KEY_DEBUG_PATH']))
-//			signingConfigs.debug.setStorePassword(signingProperties['KEY_DEBUG_PASSWORD'])
-//			signingConfigs.debug.setKeyAlias(signingProperties['KEY_DEBUG_ALIAS_USERNAME'])
-//			signingConfigs.debug.setKeyPassword(signingProperties['KEY_DEBUG_ALIAS_PASSWORD'])
-//
-//			signingConfigs.release.setStoreFile(file(signingProperties['KEY_RELEASE_PATH']))
-//			signingConfigs.release.setStorePassword(signingProperties['KEY_RELEASE_PASSWORD'])
-//			signingConfigs.release.setKeyAlias(signingProperties['KEY_RELEASE_ALIAS_USERNAME'])
-//			signingConfigs.release.setKeyPassword(signingProperties['KEY_RELEASE_ALIAS_PASSWORD'])
-//		} else {
-//			throw new GradleException("Unable to read signing.properties!")
-//		}
-//
-//		/**
-//		 * SELF-GENERATING BUILD TYPES
-//		 * Copyright (c) Diego "@_HellPie" Rossi (2015-2016)
-//		 */
+
 		buildTypes {
 			release {
-				minifyEnabled = true
+				minifyEnabled true
 				proguardFiles.add(file('proguard-rules.pro'))
 			}
 		}
-//		if(signingFile.canRead()) {
-//			buildTypes.debug.signingConfig = signingConfigs.debug
-//			buildTypes.release.signingConfig = signingConfigs.release
-//		} else {
-//			if('assemble' in task || 'assembleRelease' in task || 'aR' in task) {
-//				throw new GradleException("Unable to read signing.properties!")
-//			} else {
-//				buildTypes.debug.signingConfig = signingConfigs.missing
-//			}
-//		}
 	}
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-	compile 'com.android.support:support-annotations:23.3.0'
-	compile 'com.android.support:appcompat-v7:23.3.0'
-	compile 'com.android.support:design:23.3.0'
+	compile fileTree(dir: 'libs', include: ['*.jar'])
 }
