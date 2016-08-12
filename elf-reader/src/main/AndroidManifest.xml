@@ -14,6 +14,4 @@
   ~ limitations under the License.
   -->
 
-<resources>
-	<string name="app_name">Piemissions Utils</string>
-</resources>
+<manifest package="dev.hellpie.libs.elf.reader" />

@@ -40,5 +40,4 @@ dependencies {
 	compile fileTree(dir: 'libs', include: ['*.jar'])
 
 	compile "com.android.support:support-annotations:${project.ext.defaultSupportLibraries}"
-	compile "com.android.support:appcompat-v7:${project.ext.defaultSupportLibraries}"
 }

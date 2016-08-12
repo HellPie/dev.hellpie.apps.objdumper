@@ -19,12 +19,12 @@ apply plugin: 'com.android.application'
 android {
 
     compileSdkVersion project.ext.defaultCompileSdk
-    buildToolsVersion "24.0.1"
+    buildToolsVersion project.ext.defaultBuildTools
 
     defaultConfig {
         applicationId "dev.hellpie.apps.objdumper"
         minSdkVersion 21
-        targetSdkVersion 24
+        targetSdkVersion project.ext.defaultTargetSdk
         versionCode 3
         versionName "0.8.0"
     }
@@ -39,9 +39,10 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:support-annotations:24.1.1'
-    compile 'com.android.support:appcompat-v7:24.1.1'
-    compile 'com.android.support:design:24.1.1'
+
+    compile "com.android.support:support-annotations:${project.ext.defaultSupportLibraries}"
+    compile "com.android.support:appcompat-v7:${project.ext.defaultSupportLibraries}"
+    compile "com.android.support:design:${project.ext.defaultSupportLibraries}"
 
 	compile project(':utils-perms')
     compile project(':elf-reader')
