@@ -19,7 +19,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0-alpha3'
+		classpath 'com.android.tools.build:gradle:2.2.0-beta1'
     }
 }
 
@@ -27,6 +27,12 @@ allprojects {
     repositories {
         jcenter()
     }
+
+	project.ext {
+		defaultBuildTools = "24.0.0"
+		defaultTargetSdk = 24
+		defaultCompileSdk = defaultTargetSdk
+	}
 }
 
 task clean(type: Delete) {

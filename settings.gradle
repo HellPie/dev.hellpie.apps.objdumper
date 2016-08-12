@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-include ':app', ':utils-perms'
+include ':app', ':utils-perms', ':elf-reader'

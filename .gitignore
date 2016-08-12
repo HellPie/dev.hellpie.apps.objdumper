@@ -119,6 +119,9 @@ fabric.properties
 *.ipr
 *.iws
 
+# - Androis Studio 2.2 Project Conversion Backups
+projectFilesBackup/
+
 
 ###############################################################################
 ###                         OPERATIVE SYSTEM FILES                          ###
