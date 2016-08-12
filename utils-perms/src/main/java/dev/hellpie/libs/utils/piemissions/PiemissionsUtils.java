@@ -22,6 +22,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -32,13 +33,18 @@ import dev.hellpie.libs.utils.piemissions.models.BasePiemissionsCallback;
 public final class PiemissionsUtils {
 
 	private static ArrayList<PiemissionRequest> queue = new ArrayList<>(0);
-	private static Activity bind;
+	private static WeakReference<Activity> bindReference;
+
+	private PiemissionsUtils() {
+		throw new UnsupportedOperationException("Must not instantiate PiemissionsUtils.");
+	}
 
 	public static void init(@NonNull Activity activity) {
-		bind = activity;
+		bindReference = new WeakReference<>(activity);
 	}
 
 	public static void requestPermission(@NonNull PiemissionRequest request) {
+		Activity bind = bindReference.get();
 		if(bind == null) throw new NullPointerException("init() has not been called yet.");
 
 		ArrayList<String> denied = getDenied(request.getPermissions());
@@ -65,7 +71,7 @@ public final class PiemissionsUtils {
 			for(int i = 0; i < permissions.length; i++) {
 				if(grantResults[i] != PackageManager.PERMISSION_GRANTED) {
 					String perm = permissions[i];
-					ratPerms.put(permissions[i], shouldShowRationale(Collections.singletonList(perm)));
+					ratPerms.put(perm, shouldShowRationale(Collections.singletonList(perm)));
 					allWentWell = false;
 				}
 			}
@@ -104,6 +110,7 @@ public final class PiemissionsUtils {
 	}
 
 	public static boolean shouldShowRationale(@NonNull List<String> permissions) {
+		Activity bind = bindReference.get();
 		if(bind == null) throw new NullPointerException("init() has not been called yet.");
 
 		for(String perm : permissions) {
@@ -114,6 +121,7 @@ public final class PiemissionsUtils {
 	}
 
 	public static ArrayList<String> getDenied(@NonNull List<String> permissions) {
+		Activity bind = bindReference.get();
 		if(bind == null) throw new NullPointerException("init() has not been called yet.");
 
 		ArrayList<String> denied = new ArrayList<>(0);
