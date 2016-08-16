@@ -14,7 +14,20 @@
  * limitations under the License.
  */
 
+buildscript {
+	repositories {
+		mavenCentral() // or jcenter()
+	}
+
+	dependencies {
+		classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.5.5'
+	}
+}
+
 apply plugin: 'com.android.application'
+// make sure this line comes *after* you apply the Android plugin
+apply plugin: 'com.getkeepsafe.dexcount'
+
 
 android {
 
@@ -31,8 +44,9 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+			minifyEnabled true
+			shrinkResources true
+			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }
