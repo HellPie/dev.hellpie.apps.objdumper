@@ -14,30 +14,10 @@
  * limitations under the License.
  */
 
-buildscript {
+package dev.hellpie.libs.elf.reader.models;
 
-    repositories {
-        jcenter()
-    }
-
-    dependencies {
-		classpath 'com.android.tools.build:gradle:2.2.0-beta2'
-    }
-}
-
-allprojects {
-    repositories {
-        jcenter()
-    }
-
-	project.ext {
-		defaultBuildTools = "24.0.1"
-		defaultTargetSdk = 24
-		defaultCompileSdk = defaultTargetSdk
-		defaultSupportLibraries = "24.1.1"
+public final class ELFParsingException extends Exception {
+	public ELFParsingException(String message) {
+		super(message);
 	}
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }
